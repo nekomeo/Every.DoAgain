@@ -15,6 +15,7 @@
 		6A71AC821F44C69600A647AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A71AC801F44C69600A647AE /* Main.storyboard */; };
 		6A71AC841F44C69600A647AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A71AC831F44C69600A647AE /* Assets.xcassets */; };
 		6A71AC871F44C69600A647AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A71AC851F44C69600A647AE /* LaunchScreen.storyboard */; };
+		6A71AC931F44EDBE00A647AE /* NewToDoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A71AC921F44EDBE00A647AE /* NewToDoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,8 @@
 		6A71AC831F44C69600A647AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A71AC861F44C69600A647AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6A71AC881F44C69700A647AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6A71AC911F44EDBE00A647AE /* NewToDoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewToDoViewController.h; sourceTree = "<group>"; };
+		6A71AC921F44EDBE00A647AE /* NewToDoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewToDoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,8 @@
 				6A71AC7D1F44C69600A647AE /* DetailViewController.h */,
 				6A71AC7E1F44C69600A647AE /* DetailViewController.m */,
 				6A71AC801F44C69600A647AE /* Main.storyboard */,
+				6A71AC911F44EDBE00A647AE /* NewToDoViewController.h */,
+				6A71AC921F44EDBE00A647AE /* NewToDoViewController.m */,
 				6A71AC831F44C69600A647AE /* Assets.xcassets */,
 				6A71AC851F44C69600A647AE /* LaunchScreen.storyboard */,
 				6A71AC881F44C69700A647AE /* Info.plist */,
@@ -159,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6A71AC7F1F44C69600A647AE /* DetailViewController.m in Sources */,
+				6A71AC931F44EDBE00A647AE /* NewToDoViewController.m in Sources */,
 				6A71AC7C1F44C69600A647AE /* MasterViewController.m in Sources */,
 				6A71AC791F44C69600A647AE /* EveryDoAgain.xcdatamodeld in Sources */,
 				6A71AC761F44C69600A647AE /* AppDelegate.m in Sources */,

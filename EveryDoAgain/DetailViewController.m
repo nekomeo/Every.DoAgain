@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 
 @interface DetailViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
 
 @end
 
@@ -16,8 +17,8 @@
 
 - (void)configureView {
     // Update the user interface for the detail item.
-    if (self.detailItem) {
-//        self.detailDescriptionLabel.text = self.detailItem.timestamp.description;
+    if (self.detailItem)
+    {
         self.detailDescriptionLabel.text = self.detailItem.toDoDescription.description;
     }
 }

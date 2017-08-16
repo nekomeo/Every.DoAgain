@@ -8,8 +8,9 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
+#import "NewToDoViewController.h"
 
-@interface MasterViewController ()
+@interface MasterViewController () <NewToDoViewControllerDelegate>
 
 @end
 
@@ -20,7 +21,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(newViewController)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
@@ -37,25 +38,37 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)newViewController
+{
+    NewToDoViewController *newViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NewToDoViewController"];
+    newViewController.delegate = self;
+    newViewController.modalPresentationStyle = UIModalPresentationFullScreen;
+    [self presentViewController:newViewController animated:YES completion:nil];
+}
 
-- (void)insertNewObject:(id)sender {
+- (void) passBackTitle:(NSString *)title withDescription:(NSString*)toDoDescription andPriority:(NSInteger)priorityNumber
+{
     NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+    
     ToDo *newToDo = [[ToDo alloc] initWithContext:context];
-        
-    // If appropriate, configure the new managed object.
-//    newEvent.timestamp = [NSDate date];
-    newToDo.title = [NSString string];
+    
+    newToDo.title = title;
+    newToDo.toDoDescription = toDoDescription;
+    newToDo.priorityNumber = priorityNumber;
+    newToDo.isComplete = NO;
     
     // Save the context.
     NSError *error = nil;
-    if (![context save:&error]) {
+    if (![context save:&error])
+    {
         // Replace this implementation with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, error.userInfo);
         abort();
     }
-}
 
+    [self.tableView reloadData];
+}
 
 #pragma mark - Segues
 
@@ -116,7 +129,8 @@
 
 - (void)configureCell:(UITableViewCell *)cell withToDo:(ToDo *)toDo {
 //    cell.textLabel.text = toDo.timestamp.description;
-    cell.textLabel.text = toDo.toDoDescription.description;
+    cell.textLabel.text = toDo.title.description;
+//    cell.textLabel.text = [NSString stringWithFormat:@"%@ - %@", toDo.title, toDo.toDoDescription];
 }
 
 
@@ -134,7 +148,7 @@
     
     // Edit the sort key as appropriate.
 //    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"timestamp" ascending:NO];
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES];
 
     [fetchRequest setSortDescriptors:@[sortDescriptor]];
     
